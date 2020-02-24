@@ -12,12 +12,12 @@
 /**
  * Class Vertex is the foundation of a graph entity.
  *
- * @package     sixpeteunder\graph
+ * @package     Sixpeteunder\Graph
  * @subpackage  
  * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace sixpeteunder\graph;
+namespace Sixpeteunder\Graph;
 
 class Vertex
 {

@@ -13,13 +13,15 @@
  * Class Dijkstra is an implementation of the famous Dijkstra's algorithm to
  * calculate the shortest path between two vertices of a graph.
  *
- * @package     sixpeteunder\graph
+ * @package     Sixpeteunder\Graph
  * @subpackage  
  * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace sixpeteunder\graph;
+namespace Sixpeteunder\Graph\Algorithm;
 
+use Sixpeteunder\Graph\Graph;
+use Sixpeteunder\Graph\Vertex;
 use LogicException;
 
 class Dijkstra

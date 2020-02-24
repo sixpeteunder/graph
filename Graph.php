@@ -12,12 +12,12 @@
 /**
  * Class Graph is a dataset to easily work with a simulated graph.
  *
- * @package     sixpeteunder\graph
+ * @package     Sixpeteunder\Graph
  * @subpackage  
  * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace sixpeteunder\graph;
+namespace Sixpeteunder\Graph;
 
 use Exception;
 
