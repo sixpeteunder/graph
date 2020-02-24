@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Orient package.
+ * This file is part of the graph package.
  *
- * (c) Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * (c) Peter Mghendi <plenjo15@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,16 +12,16 @@
 /**
  * Class Graph is a dataset to easily work with a simulated graph.
  *
- * @package     Orient
- * @subpackage  Graph
- * @author      Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * @package     sixpeteunder\graph
+ * @subpackage  
+ * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace Doctrine\OrientDB\Graph;
+namespace sixpeteunder\graph;
 
-use Doctrine\OrientDB\Exception;
+use Exception;
 
-class Graph implements GraphInterface
+class Graph
 {
     /**
      * All the vertices in the graph
@@ -31,9 +31,13 @@ class Graph implements GraphInterface
     protected $vertices = array();
 
     /**
-     * {@inheritdoc}
+     * Adds a new vertex to the current graph.
+     *
+     * @param   Vertex $vertex
+     * @return  Graph
+     * @throws  Exception
      */
-    public function add(VertexInterface $vertex)
+    public function add(Vertex $vertex)
     {
         if (array_key_exists($vertex->getId(), $this->getVertices())) {
             throw new Exception('Unable to insert multiple Vertices with the same ID in a Graph');
@@ -45,7 +49,11 @@ class Graph implements GraphInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the vertex identified with the $id associated to this graph.
+     *
+     * @param   mixed $id
+     * @return  Vertex
+     * @throws  Exception
      */
     public function getVertex($id)
     {
@@ -59,7 +67,9 @@ class Graph implements GraphInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Returns all the vertices that belong to this graph.
+     *
+     * @return Array
      */
     public function getVertices()
     {

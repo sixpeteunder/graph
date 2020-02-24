@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Orient package.
+ * This file is part of the graph package.
  *
- * (c) Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * (c) Peter Mghendi <plenjo15@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,14 +12,14 @@
 /**
  * Class Vertex is the foundation of a graph entity.
  *
- * @package     Doctrine\OrientDB
- * @subpackage  Graph
- * @author      Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * @package     sixpeteunder\graph
+ * @subpackage  
+ * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace Doctrine\OrientDB\Graph;
+namespace sixpeteunder\graph;
 
-class Vertex implements VertexInterface
+class Vertex
 {
     protected $id;
     protected $potential;
@@ -44,7 +44,7 @@ class Vertex implements VertexInterface
      * @param Vertex $vertex
      * @param integer $distance
      */
-    public function connect(VertexInterface $vertex, $distance = 1)
+    public function connect(Vertex $vertex, $distance = 1)
     {
         $this->connections[$vertex->getId()] = $distance;
     }
@@ -82,7 +82,7 @@ class Vertex implements VertexInterface
     /**
      * Returns the vertex which gave to the current vertex its potential.
      *
-     * @return Doctrine\OrientDB\Graph\Vertex
+     * @return Vertex
      */
     public function getPotentialFrom()
     {
@@ -116,7 +116,7 @@ class Vertex implements VertexInterface
      * @param   Vertex $from
      * @return  boolean
      */
-    public function setPotential($potential, VertexInterface $from)
+    public function setPotential($potential, Vertex $from)
     {
         $potential = (int) $potential;
 

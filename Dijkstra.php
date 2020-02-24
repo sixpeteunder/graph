@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the Orient package.
+ * This file is part of the graph package.
  *
- * (c) Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * (c) Peter Mghendi <plenjo15@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,19 +13,16 @@
  * Class Dijkstra is an implementation of the famous Dijkstra's algorithm to
  * calculate the shortest path between two vertices of a graph.
  *
- * @package     Orient
- * @subpackage  Graph
- * @author      Alessandro Nadalin <alessandro.nadalin@gmail.com>
+ * @package     sixpeteunder\graph
+ * @subpackage  
+ * @author      Peter Mghendi <plenjo15@gmail.com>
  */
 
-namespace Doctrine\OrientDB\Graph\Algorithm;
+namespace sixpeteunder\graph;
 
-use Doctrine\OrientDB\Graph\GraphInterface;
-use Doctrine\OrientDB\Graph\VertexInterface;
-use Doctrine\OrientDB\Exception;
-use Doctrine\OrientDB\LogicException;
+use LogicException;
 
-class Dijkstra implements AlgorithmInterface
+class Dijkstra
 {
     protected $startingVertex;
     protected $endingVertex;
@@ -36,9 +33,9 @@ class Dijkstra implements AlgorithmInterface
     /**
      * Instantiates a new algorithm, requiring a graph to work with.
      *
-     * @param GraphInterface $graph
+     * @param Graph $graph
      */
-    public function __construct(GraphInterface $graph)
+    public function __construct(Graph $graph)
     {
         $this->graph = $graph;
     }
@@ -110,7 +107,7 @@ class Dijkstra implements AlgorithmInterface
     /**
      * Retrieves the vertex which we are starting from to calculate the shortest path.
      *
-     * @return VertexInterface
+     * @return Vertex
      */
     public function getStartingVertex()
     {
@@ -120,9 +117,9 @@ class Dijkstra implements AlgorithmInterface
     /**
      * Sets the vertex which we are pointing to.
      *
-     * @param VertexInterface $vertex
+     * @param Vertex $vertex
      */
-    public function setEndingVertex(VertexInterface $vertex)
+    public function setEndingVertex(Vertex $vertex)
     {
         $this->endingVertex = $vertex;
     }
@@ -130,16 +127,18 @@ class Dijkstra implements AlgorithmInterface
     /**
      * Sets the vertex which we are starting from to calculate the shortest path.
      *
-     * @param VertexInterface $vertex
+     * @param Vertex $vertex
      */
-    public function setStartingVertex(VertexInterface $vertex)
+    public function setStartingVertex(Vertex $vertex)
     {
         $this->paths[] = array($vertex);
         $this->startingVertex = $vertex;
     }
 
     /**
-     * {@inheritdoc}
+     * Solves the algorithm and returns all possible results.
+     *
+     * @return mixed
      */
     public function solve()
     {
@@ -158,9 +157,9 @@ class Dijkstra implements AlgorithmInterface
      * starting point you specify with ->setStartingVertex(), traversing
      * the graph due to Vertex's $connections attribute.
      *
-     * @param VertexInterface $vertex
+     * @param Vertex $vertex
      */
-    protected function calculatePotentials(VertexInterface $vertex)
+    protected function calculatePotentials(Vertex $vertex)
     {
         $connections = $vertex->getConnections();
         $sorted = array_flip($connections);
@@ -196,7 +195,7 @@ class Dijkstra implements AlgorithmInterface
     /**
      * Returns the graph associated with this algorithm instance.
      *
-     * @return GraphInterface
+     * @return Graph
      */
     protected function getGraph()
     {
