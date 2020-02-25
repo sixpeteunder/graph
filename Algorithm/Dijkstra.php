@@ -61,7 +61,7 @@ class Dijkstra
     /**
      * Gets the vertex which we are pointing to.
      *
-     * @return VertexInterface
+     * @return Vertex
      */
     public function getEndingVertex()
     {
@@ -82,7 +82,7 @@ class Dijkstra
             $literal .= "{$p->getId()} - ";
         }
 
-        return substr($literal, 0, count($literal) - 4);
+        return substr($literal, 0, strlen($literal) - 3);
     }
 
     /**
